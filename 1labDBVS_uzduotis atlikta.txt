@@ -1,0 +1,74 @@
+1) VISKAS GERAI
+SELECT last_name, job_id, salary AS Atlyginimas
+FROM employee;
+
+2) VISKAS GERAI 
+SELECT last_name, job_id, salary Atlyginimas
+FROM employee;
+
+3) VISKAS GERAI
+SELECT last_name, job_id, salary "Atlyginimas"
+FROM employee;
+
+4) 1 ir 2 veikia lygiai taip pat, vardas suteikiamas iš visų didžiųjų raidžių. 'AS' naudojama kad lengviau skaityt?
+   3 " " reiškia kad išvestis bus tiksliai tokia kaip parašyta tarp ""
+
+
+5) VISKAS GERAI
+SELECT *
+FROM salary_grade;
+
+6) Neveikia					Veikiantis:
+SELECT employee_id, last_name			SELECT employee_id, last_name,
+Sal x 12 METINIS ATLYGINIMAS			Salary * 12 "METINIS ATLYGINIMAS"
+FROM employee;						FROM employee;
+   
+7) SELECT * FROM DEPARTMENT;
+
+8)SELECT Department_id, location_id
+FROM DEPARTMENT;
+
+9) SELECT DISTINCT COMMISSION
+FROM EMPLOYEE
+
+10)SELECT EMPLOYEE_ID, LAST_NAME, JOB_ID, 
+HIRE_DATE AS "Įdarbinimo data"
+FROM EMPLOYEE;
+
+11) SELECT  DISTINCT COMMISSION "Skirtingu dydžių komisiniai"
+FROM EMPLOYEE;
+
+12)SELECT LAST_NAME ||' '|| JOB_ID "Darbuotojas ir darbo kodas" 
+FROM EMPLOYEE;
+
+13)SELECT 
+    FIRST_NAME || ' ' || LAST_NAME
+    || ' Ketvirčio atlyginimas: ' || SALARY * 4 || 
+    ', ketvirčio komisinis: ' || COMMISSION * 4 || 
+    ', metinis atlyginimas: ' || SALARY * 12 || 
+    ', metinis komisinis: ' || COMMISSION * 12 AS "Atlyginimas ir komisinis"
+FROM employee;
+
+14) SELECT
+EMPLOYEE_ID || ', ' ||
+FIRST_NAME || ', ' ||
+LAST_NAME || ', ' ||
+MIDDLE_INITIAL || ', ' ||
+JOB_ID || ', ' ||
+MANAGER_ID || ', ' ||
+HIRE_DATE || ', ' ||
+SALARY || ', ' ||
+COMMISSION || ', ' ||
+DEPARTMENT_ID AS "THE OUTPUT"
+FROM EMPLOYEE;
+
+15) DESC SALARY_GRADE;
+Outputas:
+Name        Null?    Type        
+----------- -------- ----------- 
+GRADE_ID    NOT NULL NUMBER(3)   
+LOWER_BOUND          NUMBER(7,2) 
+UPPER_BOUND          NUMBER(7,2)
+
+GRADE_ID - privalomas, nes NOT NULL
+NUMBER(7,2) - 7 skaitmenis, iš kurių 2 po kablelio

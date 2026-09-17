@@ -1,0 +1,59 @@
+1) SELECT last_name, salary
+FROM employee
+WHERE salary>1500;
+
+2) SELECT last_name, department_id
+FROM employee
+WHERE employee_id=7564;
+
+3) SELECT last_name, salary
+FROM employee
+WHERE salary NOT BETWEEN 1000 AND 1500;
+
+4) SELECT last_name, employee_id, hire_date
+FROM employee
+WHERE hire_date BETWEEN '01-FEB-85' AND '02-JUN-85'
+ORDER BY hire_date ASC;
+
+5)SELECT last_name, department_id
+FROM employee
+WHERE department_id IN(12,20)
+ORDER BY last_name DESC;
+
+6) SELECT last_name "Darbuotojas", salary "Mėnesinis atlygis", 
+department_id "Departamentas"
+FROM employee
+WHERE department_id IN(12,20) AND 
+salary BETWEEN 800 AND 1500
+ORDER BY last_name;
+
+7) SELECT last_name, hire_date 
+FROM employee
+WHERE hire_date LIKE '%-86';
+
+8) SELECT last_name, salary, commission 
+FROM employee
+WHERE commission IS NOT NULL
+ORDER BY salary DESC, commission DESC;
+
+9) SELECT last_name, job_id
+FROM employee
+WHERE manager_id IS NULL;
+
+10) SELECT last_name
+FROM employee
+WHERE manager_id IS NOT NULL;
+
+11) SELECT last_name
+FROM employee
+WHERE last_name LIKE '__A%';
+
+12) SELECT last_name
+FROM employee
+WHERE last_name LIKE '%A%' AND 
+last_name LIKE '%E%';
+
+13) SELECT last_name, job_id, salary
+FROM employee
+WHERE job_id IN (668, 671) AND 
+salary NOT IN (3000, 1850,1800);

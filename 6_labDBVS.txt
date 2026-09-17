@@ -1,0 +1,54 @@
+-- Lentelė: Miestas
+CREATE TABLE Miestas (
+    MiestoID NUMBER(4) CONSTRAINT MIESTAS_PK PRIMARY KEY,
+    Pavadinimas VARCHAR2(100) CONSTRAINT MIESTAS_PAV_NN NOT NULL,
+    Salis VARCHAR2(100) DEFAULT 'Lietuva',
+    Koordinates VARCHAR2(100)
+);
+
+-- Lentelė: Oru simbolis
+CREATE TABLE Oru_Simbolis (
+    SimbolioID NUMBER(4) CONSTRAINT SIMBOLIS_PK PRIMARY KEY,
+    Pavadinimas VARCHAR2(100) CONSTRAINT SIMBOLIS_PAV_NN NOT NULL,
+    IkonosURL VARCHAR2(255)
+);
+
+-- Lentelė: Oru prognoze
+CREATE TABLE Oru_Prognoze (
+    PrognozesID NUMBER(5) CONSTRAINT PROGNOZE_PK PRIMARY KEY,
+    MiestoID NUMBER(4) CONSTRAINT PROGNOZE_MIESTAS_FK REFERENCES Miestas(MiestoID),
+    Auksciausia_Temperatura NUMBER(4,1),
+    Zemiausia_Temperatura NUMBER(4,1),
+    Vejo_Kryptis VARCHAR2(50),
+    UV NUMBER(3,1),
+    SimbolioID NUMBER(4) CONSTRAINT PROGNOZE_SIMBOLIS_FK REFERENCES Oru_Simbolis(SimbolioID)
+);
+-- Miestai
+INSERT INTO Miestas (MiestoID, Pavadinimas, Salis, Koordinates)
+VALUES (1, 'Vilnius', 'Lietuva', '54.6872, 25.2797');
+
+INSERT INTO Miestas (MiestoID, Pavadinimas, Salis, Koordinates)
+VALUES (2, 'Kaunas', 'Lietuva', '54.8985, 23.9036');
+
+INSERT INTO Miestas (MiestoID, Pavadinimas, Salis, Koordinates)
+VALUES (3, 'Klaipėda', 'Lietuva', '55.7033, 21.1443');
+
+-- Simboliai
+INSERT INTO Oru_Simbolis (SimbolioID, Pavadinimas, IkonosURL)
+VALUES (1, 'Saulėta', 'https://openweathermap.org/img/wn/01d.png');
+
+INSERT INTO Oru_Simbolis (SimbolioID, Pavadinimas, IkonosURL)
+VALUES (2, 'Debesuota', 'https://openweathermap.org/img/wn/02d.png');
+
+INSERT INTO Oru_Simbolis (SimbolioID, Pavadinimas, IkonosURL)
+VALUES (3, 'Lietinga', 'https://openweathermap.org/img/wn/10d.png');
+
+-- Prognozės
+INSERT INTO Oru_Prognoze (PrognozesID, MiestoID, Auksciausia_Temperatura, Zemiausia_Temperatura, Vejo_Kryptis, UV, SimbolioID)
+VALUES (101, 1, 27.5, 15.0, 'Pietų', 5.3, 1);
+
+INSERT INTO Oru_Prognoze (PrognozesID, MiestoID, Auksciausia_Temperatura, Zemiausia_Temperatura, Vejo_Kryptis, UV, SimbolioID)
+VALUES (102, 2, 23.0, 12.5, 'Šiaurės', 4.1, 2);
+
+INSERT INTO Oru_Prognoze (PrognozesID, MiestoID, Auksciausia_Temperatura, Zemiausia_Temperatura, Vejo_Kryptis, UV, SimbolioID)
+VALUES (103, 3, 18.5, 9.8, 'Vakaru', 3.7, 3);
